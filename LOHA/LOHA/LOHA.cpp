@@ -120,6 +120,7 @@ linc:
             ChekMarks();
             system("pause");
             system("cls");
+            Menu();
             break;
         default:
             cout << "Неправильно выбран пункт меню!" << endl;

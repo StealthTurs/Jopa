@@ -152,9 +152,11 @@ void Print() {
 bool DataCleaning() {
 	bool clear = false;
 	fstream _buf("Buffer.txt", ios::out);
-	ofstream reading("DivisionBoy.txt");
-	ofstream reading_("DivisionGirl.txt");
-	ofstream read("Division.txt");
+	fstream reading("DivisionBoy.txt", ios::out);
+	fstream reading_("DivisionGirl.txt", ios::out);
+	fstream read("Division.txt", ios::out);
+	fstream re("Kol-vo Marks(preobpazovana).txt", ios::out);
+	fstream _rea("Kol-vo Marks.txt", ios::out);
 	if (!_buf)
 		cout << "Ошибка открытия буферного файла!" << endl;
 	_buf.clear();
@@ -166,9 +168,13 @@ bool DataCleaning() {
 	reading.close();
 	reading_.close();
 	read.close();
+	re.close();
+	_rea.close();
 	remove("DivisionGirl.txt");
 	remove("DivisionBoy.txt");
 	remove("Division.txt");
+	remove("Kol-vo Marks(preobpazovana).txt");
+	remove("Kol-vo Marks.txt");
 	return clear;
 }
 void DataChange() {
@@ -888,6 +894,7 @@ void PrintMarks() {
 			cout << "Ф.И.О: " << _surnameF << " " << _surnameI << " " << _surnameO << endl;
 			reading >> kol;
 			for (int j = 0; j < kol; j++) {
+				cout << endl;
 				reading >> Lesson;
 				cout << "Название предмета: " << Lesson << endl;
 				for (int g = 0; g < 9; g++) {
@@ -904,42 +911,80 @@ void PrintMarks() {
 		cout << "Ошибка отрытия буферного файла!" << endl;
 	reading.close();
 }
-void ChekMarks() {
-	ifstream reading("Marks.txt");
-	ofstream record("Kol-vo Marks.txt", ios::out | ios::end);
+void SlojenieSumMarks() {
+	ifstream reading("Kol-vo Marks.txt");
+	ofstream record("Kol-vo Marks(preobpazovana).txt", ios::out | ios::end);
 	if (reading) {
+		int n, RecordBook, kol, sum, g;
 		string _surnameF, _surnameI, _surnameO, Lesson;
-		int RecordBook, _RecordBook;
-		int n;
-		int  _marks, session, kol,sum;
 		reading >> n;
-
+		record << n << endl;
 		for (int i = 0; i < n; i++) {
 			reading >> RecordBook;
-			record << RecordBook;
+			record << RecordBook << endl;
 			reading >> _surnameF;
-			record << _surnameF;
+			record << _surnameF << endl;
 			reading >> _surnameI;
-			record << _surnameI;
+			record << _surnameI << endl;
 			reading >> _surnameO;
-			record << _surnameO;
+			record << _surnameO << endl;
 			reading >> kol;
+			g = 0;
+			cout << "test g(na vhode) = " << g<< endl;
 			for (int j = 0; j < kol; j++) {
-				reading >> Lesson;
-				
-				for (int g = 0; g < 9; g++) {
-					reading >> _marks;
-					sum = sum + _marks;
-					
 
-
-				}
-				record << sum;
+				reading >> sum;
+				g += sum;
+				cout << "test g(na vihode) = " << g << endl;
 			}
-			cout << "____________________________________" << endl;
+			record << g << endl;
 		}
 	}
 	else
 		cout << "Ошибка отрытия буферного файла!" << endl;
 	reading.close();
+	record.close();
+}
+void ChekMarks() {
+	ifstream reading("Marks.txt");
+	ofstream record("Kol-vo Marks.txt", ios::out | ios::end);
+	if (reading) {
+		if (record) {
+			string _surnameF, _surnameI, _surnameO, Lesson;
+			int RecordBook;
+			int n;
+			int  _marks, session, kol;
+			int sum;
+			reading >> n;
+			record << n << endl;
+			for (int i = 0; i < n; i++) {
+				reading >> RecordBook;
+				record << RecordBook << endl;
+				reading >> _surnameF;
+				record << _surnameF << endl;
+				reading >> _surnameI;
+				record << _surnameI << endl;
+				reading >> _surnameO;
+				record << _surnameO << endl;
+				reading >> kol;
+				record << kol << endl;
+				for (int j = 0; j < kol; j++) {
+					reading >> Lesson;
+					sum = 0;
+					for (int g = 0; g < 9; g++) {
+						reading >> _marks;
+						sum += _marks;
+					}
+					record << sum << endl;
+				}
+			}
+		}
+		else 
+			cout << "Ошибка открытия файла!" << endl;
+	}
+	else
+		cout << "Ошибка отрытия буферного файла!" << endl;
+	SlojenieSumMarks();
+	reading.close();
+	record.close();
 }
