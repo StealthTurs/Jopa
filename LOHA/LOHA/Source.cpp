@@ -904,3 +904,42 @@ void PrintMarks() {
 		cout << "Ошибка отрытия буферного файла!" << endl;
 	reading.close();
 }
+void ChekMarks() {
+	ifstream reading("Marks.txt");
+	ofstream record("Kol-vo Marks.txt", ios::out | ios::end);
+	if (reading) {
+		string _surnameF, _surnameI, _surnameO, Lesson;
+		int RecordBook, _RecordBook;
+		int n;
+		int  _marks, session, kol,sum;
+		reading >> n;
+
+		for (int i = 0; i < n; i++) {
+			reading >> RecordBook;
+			record << RecordBook;
+			reading >> _surnameF;
+			record << _surnameF;
+			reading >> _surnameI;
+			record << _surnameI;
+			reading >> _surnameO;
+			record << _surnameO;
+			reading >> kol;
+			for (int j = 0; j < kol; j++) {
+				reading >> Lesson;
+				
+				for (int g = 0; g < 9; g++) {
+					reading >> _marks;
+					sum = sum + _marks;
+					
+
+
+				}
+				record << sum;
+			}
+			cout << "____________________________________" << endl;
+		}
+	}
+	else
+		cout << "Ошибка отрытия буферного файла!" << endl;
+	reading.close();
+}

@@ -23,3 +23,4 @@ void PrintDivision();//Вывод рассортированного списка по полам
 void RecordsBooks();// оценки
 void Marks();
 void PrintMarks();
+void ChekMarks();

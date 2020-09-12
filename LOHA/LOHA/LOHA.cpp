@@ -16,8 +16,9 @@ void Menu() {
         << "(6) Сохранение данных" << endl
         << "(7) Разделить по полу" << endl
         << "(8) Показать отсартированный список" << endl
-        << "(11) Поставить оценки" << endl
-        << "(12) Вывести оценки" << endl
+        << "(9) Поставить оценки" << endl
+        << "(10) Вывести оценки" << endl
+        << "(11) Чек оценок" << endl
         << "Ваш выбор >";
     cin >> _stateMenu;
 }
@@ -113,6 +114,12 @@ linc:
             system("pause");
             system("cls");
             Menu();
+            break;
+        case 11:
+            system("cls");
+            ChekMarks();
+            system("pause");
+            system("cls");
             break;
         default:
             cout << "Неправильно выбран пункт меню!" << endl;
