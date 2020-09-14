@@ -25,3 +25,5 @@ void Marks();
 void PrintMarks();
 void SlojenieSumMarks();
 void ChekMarks();
+void Povirka();
+void Vivod();

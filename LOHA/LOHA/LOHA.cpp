@@ -19,6 +19,7 @@ void Menu() {
         << "(9) Поставить оценки" << endl
         << "(10) Вывести оценки" << endl
         << "(11) Чек оценок" << endl
+        << "(12) Вывод самого успешного" << endl
         << "Ваш выбор >";
     cin >> _stateMenu;
 }
@@ -118,6 +119,13 @@ linc:
         case 11:
             system("cls");
             ChekMarks();
+            system("pause");
+            system("cls");
+            Menu();
+            break;
+        case 12:
+            system("cls");
+            Vivod();
             system("pause");
             system("cls");
             Menu();
