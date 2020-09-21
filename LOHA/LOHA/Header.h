@@ -24,6 +24,10 @@ void RecordsBooks();// оценки
 void Marks();
 void PrintMarks();
 void SlojenieSumMarks();
+void _SlojenieSumMarks();
 void ChekMarks();
+void _ChekMarks();
 void Povirka();
+void _Povirka();
 void Vivod();
+void _Vivod();

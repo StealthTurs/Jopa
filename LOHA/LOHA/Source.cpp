@@ -928,7 +928,7 @@ void Povirka() {
 			reading >> n;
 			for (int i = 0; i < n; i++) {
 				reading >> RecordBook;
-				cout << "Chek RecordBook > " << RecordBook << endl;
+				//cout << "Chek RecordBook > " << RecordBook << endl;
 				reading >> _surnameF;
 				reading >> _surnameI;
 				reading >> _surnameO;
@@ -936,16 +936,16 @@ void Povirka() {
 				if (sum > g) {
 					g = sum;
 					record << RecordBook << endl;
-					cout << "Chek RecordBook(if) > " << RecordBook << endl;
+					//cout << "Chek RecordBook(if) > " << RecordBook << endl;
 					t++;
 				}
 			}
 			_record << t << endl;
 			for (int j = 0; j < t; j++) {
 				_reading >> _RecordBook;
-				cout << "Chek _RecordBook > " << _RecordBook << endl;
+				//cout << "Chek _RecordBook > " << _RecordBook << endl;
 				_record << _RecordBook << endl;
-				cout << "Chek _RecordBook(posle _record) > " << _RecordBook << endl;
+				//cout << "Chek _RecordBook(posle _record) > " << _RecordBook << endl;
 			}
 		}
 		else
@@ -979,11 +979,11 @@ void SlojenieSumMarks() {
 				record << _surnameO << endl;
 				reading >> kol;
 				g = 0;
-				cout << "test g(na vhode) = " << g << endl;
+				//cout << "test g(na vhode) = " << g << endl;
 				for (int j = 0; j < kol; j++) {
 					reading >> sum;
 					g += sum;
-					cout << "test g(na vihode) = " << g << endl;
+					//cout << "test g(na vihode) = " << g << endl;
 				}
 				record << g << endl;
 			}
@@ -993,7 +993,6 @@ void SlojenieSumMarks() {
 	}
 	else
 		cout << "Ошибка отрытия буферного файла!" << endl;
-	system("cls");
 	Povirka();
 	reading.close();
 	record.close();
@@ -1063,7 +1062,7 @@ void Vivod() {
 				_reading >> _DOBMonth;
 				_reading >> _DOBYear;
 				_reading >> RecordBook;
-				cout << "test RecordBook >" << RecordBook << endl;
+				//cout << "test RecordBook >" << RecordBook << endl;
 				if (_RecordBook == RecordBook) {
 					cout << "Пол(1-Муж.;0-Жен.): " << _gender << endl;
 					cout << "Ф.И.О: " << _surnameF << " " << _surnameI << " " << _surnameO << endl;
@@ -1090,6 +1089,106 @@ void Vivod() {
 		}
 		else
 			 cout << "Ошибка отрытия буферного файла!" << endl;
+	}
+	else
+		cout << "Ошибка открытия файла!" << endl;
+	reading.close();
+	_reading.close();
+}
+void _Povirka() {
+	ifstream reading("Kol-vo Marks(preobpazovana).txt");
+	ifstream _reading("Povirka_1.txt");
+	ofstream record("Povirka_1.txt", ios::out | ios::beg);
+	ofstream _record("OPovirkaO.txt", ios::out | ios::beg);
+	
+	if (reading) {
+		if (record) {
+			int n, RecordBook, _RecordBook = 0, sum, t = 0;
+			string _surnameF, _surnameI, _surnameO;
+			int g = 10000000000;
+			reading >> n;
+			for (int i = 0; i < n; i++) {
+				reading >> RecordBook;
+				cout << "Chek RecordBook > " << RecordBook << endl;
+				reading >> _surnameF;
+				reading >> _surnameI;
+				reading >> _surnameO;
+				reading >> sum;
+				if (g > sum) {
+					g = sum;
+					record << RecordBook << endl;
+					cout << "Chek RecordBook(if) > " << RecordBook << endl;
+					t++;
+				}
+			}
+			_record << t << endl;
+			for (int j = 0; j < t; j++) {
+				_reading >> _RecordBook;
+				cout << "Chek _RecordBook > " << _RecordBook << endl;
+				_record << _RecordBook << endl;
+				cout << "Chek _RecordBook(posle _record) > " << _RecordBook << endl;
+			}
+		}
+		else
+			cout << "Ошибка открытия файла!" << endl;
+	}
+	else
+		cout << "Ошибка отрытия буферного файла!" << endl;
+	reading.close();
+	_reading.close();
+	record.close();
+	_record.close();
+	//remove("Povirka_1.txt");
+}
+void _Vivod() {
+	ifstream reading("OPovirkaO.txt");
+	ifstream _reading("Buffer.txt");
+	if (reading) {
+		if (_reading) {
+			string _surnameF, _surnameI, _surnameO, _DOBDay, _DOBMonth, _DOBYear, Fak, Kaf, Group;
+			int _gender = 0, _YearOfReceipt = 0, RecordBook = 0, _RecordBook = 0, n = 0, n1 = 0;
+			reading >> n1;
+			for (int i = 0; i < n1; i++) {
+				reading >> _RecordBook;
+				cout << "test _RecordBook >" << _RecordBook << endl;
+			}
+			_reading >> n;
+			for (int j = 0; j < n; j++) {
+				_reading >> _gender;
+				_reading >> _surnameF;
+				_reading >> _surnameI;
+				_reading >> _surnameO;
+				_reading >> _DOBDay;
+				_reading >> _DOBMonth;
+				_reading >> _DOBYear;
+				_reading >> RecordBook;
+				cout << "test RecordBook >" << RecordBook << endl;
+				if (_RecordBook == RecordBook) {
+					cout << "Пол(1-Муж.;0-Жен.): " << _gender << endl;
+					cout << "Ф.И.О: " << _surnameF << " " << _surnameI << " " << _surnameO << endl;
+					cout << "Дата рождения: " << _DOBDay << "." << _DOBMonth << "." << _DOBYear << endl;
+					cout << "Зачетная книжка: " << RecordBook << endl;
+					_reading >> Fak;
+					cout << "Факультет: " << Fak << endl;
+					_reading >> Kaf;
+					cout << "Кафедра: " << Kaf << endl;
+					_reading >> Group;
+					cout << "Группа: " << Group << endl;
+					_reading >> _YearOfReceipt;
+					cout << "Год поступления: " << _YearOfReceipt << endl;
+					cout << "__________________________________________" << endl;
+				}
+				else {
+					_reading >> Fak;
+					_reading >> Kaf;
+					_reading >> Group;
+					_reading >> _YearOfReceipt;
+				}
+
+			}
+		}
+		else
+			cout << "Ошибка отрытия буферного файла!" << endl;
 	}
 	else
 		cout << "Ошибка открытия файла!" << endl;

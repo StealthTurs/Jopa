@@ -20,6 +20,8 @@ void Menu() {
         << "(10) Вывести оценки" << endl
         << "(11) Чек оценок" << endl
         << "(12) Вывод самого успешного" << endl
+        << "(13) Ебанные отстающие" << endl
+        << "(14) Вывксти ебаных даунов " << endl
         << "Ваш выбор >";
     cin >> _stateMenu;
 }
@@ -130,6 +132,21 @@ linc:
             system("cls");
             Menu();
             break;
+        case 13:
+            system("cls");
+           _Povirka();
+            system("pause");
+            system("cls");
+            Menu();
+            break;
+        case 14:
+            system("cls");
+            _Vivod();
+            system("pause");
+            system("cls");
+            Menu();
+            break;
+
        
         default:
             cout << "Неправильно выбран пункт меню!" << endl;
