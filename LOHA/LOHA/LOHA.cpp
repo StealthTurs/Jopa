@@ -130,6 +130,7 @@ linc:
             system("cls");
             Menu();
             break;
+       
         default:
             cout << "Неправильно выбран пункт меню!" << endl;
             goto linc;

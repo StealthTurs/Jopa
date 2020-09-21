@@ -914,6 +914,51 @@ void PrintMarks() {
 		cout << "Ошибка отрытия буферного файла!" << endl;
 	reading.close();
 }
+void Povirka() {
+	ifstream reading("Kol-vo Marks(preobpazovana).txt");
+	ifstream _reading("Povirka1.txt");
+	ofstream record("Povirka1.txt", ios::out | ios::beg);
+	ofstream _record("Povirka.txt", ios::out | ios::beg);
+	int g = 0;
+	if (reading) {
+		if (record) {
+			int n, RecordBook, _RecordBook = 0, sum, t = 0;
+			string _surnameF, _surnameI, _surnameO;
+			g = 0;
+			reading >> n;
+			for (int i = 0; i < n; i++) {
+				reading >> RecordBook;
+				cout << "Chek RecordBook > " << RecordBook << endl;
+				reading >> _surnameF;
+				reading >> _surnameI;
+				reading >> _surnameO;
+				reading >> sum;
+				if (sum > g) {
+					g = sum;
+					record << RecordBook << endl;
+					cout << "Chek RecordBook(if) > " << RecordBook << endl;
+					t++;
+				}
+			}
+			_record << t << endl;
+			for (int j = 0; j < t; j++) {
+				_reading >> _RecordBook;
+				cout << "Chek _RecordBook > " << _RecordBook << endl;
+				_record << _RecordBook << endl;
+				cout << "Chek _RecordBook(posle _record) > " << _RecordBook << endl;
+			}
+		}
+		else
+			cout << "Ошибка открытия файла!" << endl;
+	}
+	else
+		cout << "Ошибка отрытия буферного файла!" << endl;
+	reading.close();
+	_reading.close();
+	record.close();
+	_record.close();
+	remove("Povirka1.txt");
+}
 void SlojenieSumMarks() {
 	ifstream reading("Kol-vo Marks.txt");
 	ofstream record("Kol-vo Marks(preobpazovana).txt", ios::out | ios::end);
@@ -995,44 +1040,6 @@ void ChekMarks() {
 	SlojenieSumMarks();
 	reading.close();
 	record.close();
-}
-void Povirka() {
-	ifstream reading("Kol-vo Marks(preobpazovana).txt");
-	ofstream record("Povirka1.txt", ios::out | ios::beg);
-	ofstream _record("Povirka.txt", ios::out | ios::beg);
-	int g = -1;
-	if (reading) {
-		if (record){
-			int n, RecordBook, kol, sum, t = 0;
-			string _surnameF, _surnameI, _surnameO;
-			reading >> n;
-			for (int i = 0; i < n; i++) {
-				reading >> RecordBook;
-				reading >> _surnameF;
-				reading >> _surnameI;
-				reading >> _surnameO;
-				reading >> sum;
-				if (sum > g) {
-					g = sum;
-					record << RecordBook << endl;
-					t++;
-				}
-			}
-			_record << t << endl;
-			for (int j = 0; j < t; j++) {
-				reading >> RecordBook;
-				_record << RecordBook << endl;
-			}
-		}
-		else
-			cout << "Ошибка открытия файла!" << endl;
-	}
-	else
-		cout << "Ошибка отрытия буферного файла!" << endl;
-	reading.close();
-	record.close();
-	_record.close();
-	remove("Povirka1.txt");
 }
 void Vivod() {
 	ifstream reading("Povirka.txt");
