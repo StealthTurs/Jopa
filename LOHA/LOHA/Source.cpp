@@ -928,7 +928,6 @@ void Povirka() {
 			reading >> n;
 			for (int i = 0; i < n; i++) {
 				reading >> RecordBook;
-				//cout << "Chek RecordBook > " << RecordBook << endl;
 				reading >> _surnameF;
 				reading >> _surnameI;
 				reading >> _surnameO;
@@ -936,16 +935,13 @@ void Povirka() {
 				if (sum > g) {
 					g = sum;
 					record << RecordBook << endl;
-					//cout << "Chek RecordBook(if) > " << RecordBook << endl;
 					t++;
 				}
 			}
 			_record << t << endl;
 			for (int j = 0; j < t; j++) {
 				_reading >> _RecordBook;
-				//cout << "Chek _RecordBook > " << _RecordBook << endl;
 				_record << _RecordBook << endl;
-				//cout << "Chek _RecordBook(posle _record) > " << _RecordBook << endl;
 			}
 		}
 		else
@@ -979,11 +975,9 @@ void SlojenieSumMarks() {
 				record << _surnameO << endl;
 				reading >> kol;
 				g = 0;
-				//cout << "test g(na vhode) = " << g << endl;
 				for (int j = 0; j < kol; j++) {
 					reading >> sum;
 					g += sum;
-					//cout << "test g(na vihode) = " << g << endl;
 				}
 				record << g << endl;
 			}
@@ -1062,7 +1056,6 @@ void Vivod() {
 				_reading >> _DOBMonth;
 				_reading >> _DOBYear;
 				_reading >> RecordBook;
-				//cout << "test RecordBook >" << RecordBook << endl;
 				if (_RecordBook == RecordBook) {
 					cout << "Пол(1-Муж.;0-Жен.): " << _gender << endl;
 					cout << "Ф.И.О: " << _surnameF << " " << _surnameI << " " << _surnameO << endl;
@@ -1124,9 +1117,7 @@ void _Povirka() {
 			_record << t << endl;
 			for (int j = 0; j < t; j++) {
 				_reading >> _RecordBook;
-				cout << "Chek _RecordBook > " << _RecordBook << endl;
 				_record << _RecordBook << endl;
-				cout << "Chek _RecordBook(posle _record) > " << _RecordBook << endl;
 			}
 		}
 		else
@@ -1138,7 +1129,7 @@ void _Povirka() {
 	_reading.close();
 	record.close();
 	_record.close();
-	//remove("Povirka_1.txt");
+	remove("Povirka_1.txt");
 }
 void _Vivod() {
 	ifstream reading("OPovirkaO.txt");
@@ -1162,7 +1153,6 @@ void _Vivod() {
 				_reading >> _DOBMonth;
 				_reading >> _DOBYear;
 				_reading >> RecordBook;
-				cout << "test RecordBook >" << RecordBook << endl;
 				if (_RecordBook == RecordBook) {
 					cout << "Пол(1-Муж.;0-Жен.): " << _gender << endl;
 					cout << "Ф.И.О: " << _surnameF << " " << _surnameI << " " << _surnameO << endl;
